@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { colors } from '../system/colors';
-import { spacing } from '../system/spacing';
 
 interface ProductImageProps {
   src: string;
@@ -31,23 +29,15 @@ export const ProductImage = React.forwardRef<HTMLDivElement, ProductImageProps>(
         ref={ref}
         className={`relative w-full aspect-square overflow-hidden rounded-lg ${className}`}
         style={{
-          backgroundColor: colors.primary.background,
+          backgroundColor: '#F5EEF2',
         }}
       >
         {/* Placeholder / Loading state */}
         {isLoading && (
           <div
-            className="absolute inset-0 animate-pulse flex items-center justify-center"
-            style={{
-              backgroundColor: colors.neutral.border,
-            }}
+            className="absolute inset-0 animate-pulse flex items-center justify-center bg-pink-100"
           >
-            <span
-              style={{
-                color: colors.neutral.disabled,
-                fontSize: '12px',
-              }}
-            >
+            <span className="text-xs text-pink-300">
               Loading...
             </span>
           </div>
@@ -56,17 +46,10 @@ export const ProductImage = React.forwardRef<HTMLDivElement, ProductImageProps>(
         {/* Error state */}
         {error && (
           <div
-            className="absolute inset-0 flex items-center justify-center flex-col gap-2"
-            style={{
-              backgroundColor: colors.primary.background,
-            }}
+            className="absolute inset-0 flex items-center justify-center flex-col gap-2 p-4"
+            style={{ backgroundColor: '#F5EEF2' }}
           >
-            <span
-              style={{
-                color: colors.neutral.disabled,
-                fontSize: '14px',
-              }}
-            >
+            <span className="text-sm text-pink-300">
               Image unavailable
             </span>
           </div>
@@ -92,5 +75,4 @@ export const ProductImage = React.forwardRef<HTMLDivElement, ProductImageProps>(
 );
 
 ProductImage.displayName = 'ProductImage';
-
 export default ProductImage;
