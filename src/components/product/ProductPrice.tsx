@@ -1,6 +1,4 @@
 import React from 'react';
-import { colors } from '../system/colors';
-import { spacing } from '../system/spacing';
 
 interface ProductPriceProps {
   price: number;
@@ -19,18 +17,12 @@ export const ProductPrice = React.forwardRef<HTMLDivElement, ProductPriceProps>(
     return (
       <div
         ref={ref}
-        className={`flex items-baseline gap-2 ${className}`}
-        style={{
-          paddingRight: spacing.sm,
-          paddingLeft: spacing.sm,
-        }}
+        className={`flex items-baseline gap-2 px-2 ${className}`}
       >
         {/* Current Price in Rupees */}
         <span
           className="font-bold text-lg"
-          style={{
-            color: colors.primary.accent,
-          }}
+          style={{ color: '#FFB1D3' }}
         >
           ₹{price.toLocaleString('en-IN')}
         </span>
@@ -38,10 +30,7 @@ export const ProductPrice = React.forwardRef<HTMLDivElement, ProductPriceProps>(
         {/* Original Price (strikethrough) */}
         {hasDiscount && (
           <span
-            className="text-sm line-through"
-            style={{
-              color: colors.neutral.disabled,
-            }}
+            className="text-sm line-through text-gray-400"
           >
             ₹{originalPrice.toLocaleString('en-IN')}
           </span>
@@ -52,8 +41,8 @@ export const ProductPrice = React.forwardRef<HTMLDivElement, ProductPriceProps>(
           <span
             className="text-xs font-bold px-1.5 py-0.5 rounded"
             style={{
-              backgroundColor: colors.primary.accent,
-              color: colors.primary.background,
+              backgroundColor: '#FFB1D3',
+              color: '#F5EEF2',
             }}
           >
             -{discountPercent}%
@@ -65,5 +54,4 @@ export const ProductPrice = React.forwardRef<HTMLDivElement, ProductPriceProps>(
 );
 
 ProductPrice.displayName = 'ProductPrice';
-
 export default ProductPrice;
