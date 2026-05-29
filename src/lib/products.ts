@@ -442,3 +442,17 @@ export const PRODUCT_STATS = {
   averageRating: (products.reduce((sum, p) => sum + p.rating, 0) / products.length).toFixed(1),
   onSale: products.filter((p) => p.originalPrice).length,
 };
+
+// Currency formatter
+export function formatINR(amount: number): string {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
+// Alias for getProductById
+export function getProduct(id: string): Product | undefined {
+  return getProductById(id);
+}
