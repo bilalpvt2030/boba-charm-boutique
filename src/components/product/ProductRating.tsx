@@ -1,6 +1,4 @@
 import React from 'react';
-import { colors } from '../system/colors';
-import { spacing } from '../system/spacing';
 
 interface ProductRatingProps {
   rating: number;
@@ -17,42 +15,24 @@ export const ProductRating = React.forwardRef<HTMLDivElement, ProductRatingProps
     return (
       <div
         ref={ref}
-        className={`flex items-center gap-2 ${className}`}
-        style={{
-          paddingRight: spacing.sm,
-          paddingLeft: spacing.sm,
-        }}
+        className={`flex items-center gap-2 px-2 ${className}`}
       >
-        {/* Stars */}
         <div className="flex gap-0.5">
           {[...Array(5)].map((_, i) => {
             const isFilled = i < fullStars;
             const isHalf = i === fullStars && hasHalfStar;
-
             return (
               <div
                 key={i}
                 className="relative text-sm"
-                style={{
-                  width: '16px',
-                  height: '16px',
-                }}
+                style={{ width: '16px', height: '16px' }}
               >
-                {/* Background star */}
-                <span
-                  style={{
-                    color: colors.neutral.border,
-                  }}
-                >
-                  ★
-                </span>
-
-                {/* Filled star */}
+                <span style={{ color: '#e5e7eb' }}>★</span>
                 {(isFilled || isHalf) && (
                   <span
                     className="absolute inset-0"
                     style={{
-                      color: colors.primary.accent,
+                      color: '#FFB1D3',
                       overflow: 'hidden',
                       width: isFilled ? '100%' : '50%',
                     }}
@@ -64,26 +44,12 @@ export const ProductRating = React.forwardRef<HTMLDivElement, ProductRatingProps
             );
           })}
         </div>
-
-        {/* Rating text */}
         <div className="flex items-center gap-1.5">
-          <span
-            className="font-semibold text-sm"
-            style={{
-              color: colors.primary.text,
-            }}
-          >
+          <span className="font-semibold text-sm text-gray-800">
             {rating.toFixed(1)}
           </span>
-
-          {/* Review count */}
           {showLabel && (
-            <span
-              className="text-xs"
-              style={{
-                color: colors.neutral.secondary,
-              }}
-            >
+            <span className="text-xs text-gray-500">
               ({reviewCount.toLocaleString()} reviews)
             </span>
           )}
@@ -94,5 +60,4 @@ export const ProductRating = React.forwardRef<HTMLDivElement, ProductRatingProps
 );
 
 ProductRating.displayName = 'ProductRating';
-
 export default ProductRating;
