@@ -12,22 +12,11 @@ export const Route = createFileRoute("/product/$id")({
     return { product };
   },
   head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [
-          { title: `${loaderData.product.name} — Boba Charms` },
-          { name: "description", content: loaderData.product.description },
-          { property: "og:title", content: loaderData.product.name },
-          { property: "og:description", content: loaderData.product.description },
-          { property: "og:image", content: loaderData.product.image },
-        ]
-      : [],
+    meta: [
+      { title: `${loaderData.product.name} — Boba Charms` },
+      { name: "description", content: loaderData.product.description },
+    ],
   }),
-  notFoundComponent: () => (
-    <div className="py-32 text-center">
-      <p className="font-serif-italic text-2xl">Piece not found.</p>
-      <Link to="/shop" className="inline-block mt-6 text-[11px] uppercase tracking-[0.22em] underline underline-offset-8">Back to shop</Link>
-    </div>
-  ),
   component: ProductPage,
 });
 
@@ -44,19 +33,14 @@ function ProductPage() {
         <div className="aspect-square w-full overflow-hidden bg-secondary">
           <img src={product.image} alt={product.name} className="size-full object-cover" />
         </div>
-
         <div className="lg:pt-10">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">{product.collection}</p>
-          <h1 className="font-display text-4xl md:text-5xl mt-4">{product.name}</h1>
+          <h1 className="font-display text-4xl md:text-5xl">{product.name}</h1>
           <p className="text-xl mt-6">{formatINR(product.price)}</p>
-
           <p className="mt-10 text-[15px] leading-[1.8] text-foreground/80 max-w-md">{product.description}</p>
-
           <div className="mt-10">
             <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground mb-3">Size</p>
             <div className="inline-flex border border-foreground px-5 py-2 text-xs">OS</div>
           </div>
-
           <div className="mt-8">
             <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground mb-3">Quantity</p>
             <div className="inline-flex items-center border border-border">
@@ -65,7 +49,6 @@ function ProductPage() {
               <button onClick={() => setQty(qty + 1)} className="p-3"><Plus className="size-3" /></button>
             </div>
           </div>
-
           <div className="mt-10 grid grid-cols-2 gap-3 max-w-md">
             <button
               onClick={() => add(product, qty)}
@@ -80,7 +63,6 @@ function ProductPage() {
               Buy Now
             </button>
           </div>
-
           <div className="mt-12 border-t border-border/60 pt-8 space-y-3 text-xs text-muted-foreground">
             <p>· Hand-finished, shipped within 48 hours</p>
             <p>· Considered pricing, intentional craft</p>
@@ -88,7 +70,6 @@ function ProductPage() {
           </div>
         </div>
       </section>
-
       {related.length > 0 && (
         <section className="mx-auto max-w-7xl px-6 lg:px-12 py-20">
           <h2 className="font-display text-3xl mb-12">You may also <span className="font-serif-italic">love</span></h2>
