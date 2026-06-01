@@ -2,7 +2,6 @@ import React from 'react';
 import type { Product } from '../../lib/products';
 import { ProductImage } from './ProductImage';
 import { ProductPrice } from './ProductPrice';
-import { ProductRating } from './ProductRating';
 import { ProductBadge } from './ProductBadge';
 
 interface ProductCardProps {
@@ -31,7 +30,6 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
             priority={false}
             className="group-hover:opacity-90"
           />
-
           {/* Badge - Top Right */}
           {product.badge && (
             <div
@@ -44,7 +42,6 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
               <ProductBadge type={product.badge} />
             </div>
           )}
-
           {/* Stock Status */}
           {!product.inStock && (
             <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/30">
@@ -54,7 +51,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
         </div>
 
         {/* Content Container */}
-        <div className="flex flex-col gap-2 px-2">
+        <div className="flex flex-col gap-3 px-2">
           {/* Product Name */}
           <h3
             className="font-semibold line-clamp-2 group-hover:opacity-75 text-sm leading-snug"
@@ -64,38 +61,16 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
           >
             {product.name}
           </h3>
-
-          {/* Rating */}
-          <ProductRating rating={product.rating} reviewCount={product.reviewCount} />
-
-          {/* Category */}
-          <span className="text-xs uppercase tracking-widest font-semibold opacity-60">
-            {product.category}
-          </span>
-
           {/* Price */}
           <ProductPrice
             price={product.price}
             originalPrice={product.originalPrice}
             onSale={!!product.originalPrice}
           />
-
-          {/* Colors (if available) */}
-          {product.colors && product.colors.length > 0 && (
-            <div className="flex gap-2 pt-2">
-              {product.colors.map((color) => (
-                <div key={color} className="text-xs opacity-60">
-                  {color}
-                  {product.colors.indexOf(color) < product.colors.length - 1 && ','}
-                </div>
-              ))}
-            </div>
-          )}
-
           {/* Add to Cart Button */}
           <button
             disabled={!product.inStock}
-            className="mt-3 w-full py-2.5 font-semibold text-sm rounded-lg transition-all duration-300 uppercase tracking-wide"
+            className="mt-1 w-full py-2.5 font-semibold text-sm rounded-lg transition-all duration-300 uppercase tracking-wide"
             style={{
               backgroundColor: product.inStock ? '#FFB1D3' : '#CCCCCC',
               color: product.inStock ? '#FFFFFF' : '#999999',
@@ -113,5 +88,4 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 );
 
 ProductCard.displayName = 'ProductCard';
-
 export default ProductCard;
