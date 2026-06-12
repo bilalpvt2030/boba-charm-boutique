@@ -25,7 +25,7 @@ function ProductPage() {
   const [qty, setQty] = useState(1);
   const add = useCart((s) => s.add);
   const navigate = useNavigate();
-  const related = products.filter((p) => p.id !== product.id && p.collection === product.collection).slice(0, 4);
+  const related = products.filter((p) => p.id !== product.id && p.category === product.category).slice(0, 4);
 
   return (
     <>
