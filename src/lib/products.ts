@@ -1,5 +1,3 @@
-import type { CSSProperties } from 'react';
-
 export interface Product {
   id: string;
   name: string;
@@ -14,21 +12,21 @@ export interface Product {
   inStock: boolean;
   badge?: 'new' | 'sale' | 'trending';
   colors?: string[];
-  material: string;
+  material?: string;
   dimensions?: string;
   care?: string;
 }
 
-// Product data - 25 items total (prices in Indian Rupees ₹ @ 1:83 conversion)
+const SUPABASE_IMG = 'https://uqradmprupflbivhzshi.supabase.co/storage/v1/object/public/products';
+
 export const products: Product[] = [
-  // EARRINGS (5 variants - butterfly collection)
   {
     id: 'ear-001',
     name: 'Lavender Dream Butterfly Earrings',
     category: 'earrings',
     price: 4067,
-    image: '/products/earrings/lavender-butterfly.jpg',
-    description: 'Delicate lavender butterfly charm earrings with opal-inspired resin details. Perfect for everyday elegance and whimsical style.',
+    image: `${SUPABASE_IMG}/earrings-purple-butterfly-star.jpg`,
+    description: 'Delicate lavender butterfly charm earrings with opal-inspired resin details.',
     rating: 4.9,
     reviewCount: 178,
     inStock: true,
@@ -42,8 +40,8 @@ export const products: Product[] = [
     name: 'Golden Butterfly Earrings',
     category: 'earrings',
     price: 4067,
-    image: '/products/earrings/golden-butterfly.jpg',
-    description: 'Classic gold-toned butterfly earrings with pearl accents. Timeless sophistication for any occasion.',
+    image: `${SUPABASE_IMG}/earrings-yellow-butterfly-star.jpg`,
+    description: 'Classic gold-toned butterfly earrings with pearl accents.',
     rating: 4.9,
     reviewCount: 203,
     inStock: true,
@@ -57,8 +55,8 @@ export const products: Product[] = [
     category: 'earrings',
     price: 4067,
     originalPrice: 8217,
-    image: '/products/earrings/blue-butterfly.jpg',
-    description: 'Charming blue butterfly earrings with star accents. Playful yet elegant design.',
+    image: `${SUPABASE_IMG}/earrings-blue-butterfly-star.jpg`,
+    description: 'Charming blue butterfly earrings with star accents.',
     rating: 4.8,
     reviewCount: 145,
     inStock: true,
@@ -72,8 +70,8 @@ export const products: Product[] = [
     name: 'Rainbow Heart Pendant Earrings',
     category: 'earrings',
     price: 4067,
-    image: '/products/earrings/rainbow-heart.jpg',
-    description: 'Multicolor gradient heart earrings on delicate black cord. Modern romantic style.',
+    image: `${SUPABASE_IMG}/necklace-galaxy-heart-pair.jpg`,
+    description: 'Multicolor gradient heart earrings on delicate black cord.',
     rating: 4.7,
     reviewCount: 124,
     inStock: true,
@@ -86,24 +84,22 @@ export const products: Product[] = [
     name: 'Cherry Red Heart Earrings',
     category: 'earrings',
     price: 4067,
-    image: '/products/earrings/cherry-red-hearts.jpg',
-    description: 'Bold cherry red heart earrings on black string. Statement piece for confident style.',
+    image: `${SUPABASE_IMG}/necklace-red-heart-trio.jpg`,
+    description: 'Bold cherry red heart earrings on black string.',
     rating: 4.6,
-    reviewCount: 92,
+    reviewCount: 98,
     inStock: true,
     material: 'Acrylic hearts with black string',
     colors: ['Cherry Red'],
     care: 'Handle with care',
   },
-
-  // KEYCHAINS (12 variants)
   {
     id: 'key-001',
     name: 'Mystical Bow Charm Keychain',
     category: 'keychains',
     price: 9047,
-    image: '/products/keychains/mystical-bow.jpg',
-    description: 'Elegant bow with dangling mystical charm elements. Perfect accessory for bags and keys.',
+    image: `${SUPABASE_IMG}/phone-charm-pink-flower-bow.jpg`,
+    description: 'Elegant bow with dangling mystical charm elements.',
     rating: 4.9,
     reviewCount: 287,
     inStock: true,
@@ -117,10 +113,10 @@ export const products: Product[] = [
     name: 'Racing Blue Keychain',
     category: 'keychains',
     price: 8217,
-    image: '/products/keychains/racing-blue.jpg',
-    description: 'Sporty racing car charm with blue & white detailing. For car enthusiasts and speed lovers.',
+    image: `${SUPABASE_IMG}/keychain-williams-f1-blue.jpg`,
+    description: 'Sporty racing car charm with blue and white detailing.',
     rating: 4.5,
-    reviewCount: 67,
+    reviewCount: 92,
     inStock: true,
     material: 'Metal with enamel coating',
     colors: ['Blue & White'],
@@ -131,8 +127,8 @@ export const products: Product[] = [
     name: 'Crystal Flower Cascade Keychain',
     category: 'keychains',
     price: 9047,
-    image: '/products/keychains/crystal-flowers.jpg',
-    description: 'Multi-strand beaded keychain with crystal flowers and pearls. Elegant and delicate.',
+    image: `${SUPABASE_IMG}/phone-charm-blue-flower.jpg`,
+    description: 'Multi-strand beaded keychain with crystal flowers and pearls.',
     rating: 4.8,
     reviewCount: 156,
     inStock: true,
@@ -145,8 +141,8 @@ export const products: Product[] = [
     name: 'Black Star Charm Keychain',
     category: 'keychains',
     price: 9877,
-    image: '/products/keychains/black-star.jpg',
-    description: 'Minimalist black beads with star and charm accents. Subtle elegance for everyday carry.',
+    image: `${SUPABASE_IMG}/phone-charm-black-bow-star.jpg`,
+    description: 'Minimalist black beads with star and charm accents.',
     rating: 4.7,
     reviewCount: 113,
     inStock: true,
@@ -160,8 +156,8 @@ export const products: Product[] = [
     category: 'keychains',
     price: 9047,
     originalPrice: 13197,
-    image: '/products/keychains/pastel-lanyard.jpg',
-    description: 'Soft pastel beads with decorative charms on purple cord. Dreamy aesthetic.',
+    image: `${SUPABASE_IMG}/phone-charm-pink-purple-strap.jpg`,
+    description: 'Soft pastel beads with decorative charms on purple cord.',
     rating: 4.8,
     reviewCount: 134,
     inStock: true,
@@ -175,8 +171,8 @@ export const products: Product[] = [
     name: 'Gaming Lover Keychain',
     category: 'keychains',
     price: 9877,
-    image: '/products/keychains/gaming-keychain.jpg',
-    description: 'Fun gaming-themed charms with dice and hearts. Perfect for gamers and enthusiasts.',
+    image: `${SUPABASE_IMG}/keychain-guitar-phone-charm.jpg`,
+    description: 'Fun music and gaming-themed charms with dice and hearts.',
     rating: 4.6,
     reviewCount: 89,
     inStock: true,
@@ -189,8 +185,8 @@ export const products: Product[] = [
     name: 'Green Bow Vine Keychain',
     category: 'keychains',
     price: 9047,
-    image: '/products/keychains/green-bow.jpg',
-    description: 'Nature-inspired green bow with vine and charm details. Eco-aesthetic design.',
+    image: `${SUPABASE_IMG}/phone-charm-green-bow-double.jpg`,
+    description: 'Nature-inspired green bow with vine and charm details.',
     rating: 4.8,
     reviewCount: 167,
     inStock: true,
@@ -204,8 +200,8 @@ export const products: Product[] = [
     name: 'Minimalist Pearl Keychain',
     category: 'keychains',
     price: 9877,
-    image: '/products/keychains/pearl-keychain.jpg',
-    description: 'Simple pearl and metal bead keychain. Sophisticated minimalist design.',
+    image: `${SUPABASE_IMG}/keychain-maliha-personalized.jpg`,
+    description: 'Personalized name keychain with pearl and charm beads.',
     rating: 4.7,
     reviewCount: 112,
     inStock: true,
@@ -218,8 +214,8 @@ export const products: Product[] = [
     name: 'Mystical Bow Star Keychain',
     category: 'keychains',
     price: 10707,
-    image: '/products/keychains/bow-stars.jpg',
-    description: 'Elegant bow with star and pearl charm ensemble. Whimsical and charming.',
+    image: `${SUPABASE_IMG}/phone-charm-green-bow-star.jpg`,
+    description: 'Elegant bow with star and pearl charm ensemble.',
     rating: 4.8,
     reviewCount: 145,
     inStock: true,
@@ -232,8 +228,8 @@ export const products: Product[] = [
     name: 'Black Bow Star Keychain',
     category: 'keychains',
     price: 10707,
-    image: '/products/keychains/black-bow-star.jpg',
-    description: 'Sophisticated black bow with star and pearl accents. Elegant everyday piece.',
+    image: `${SUPABASE_IMG}/phone-charm-black-white-strap.jpg`,
+    description: 'Sophisticated black bow with star and pearl accents.',
     rating: 4.7,
     reviewCount: 128,
     inStock: true,
@@ -246,10 +242,10 @@ export const products: Product[] = [
     name: 'Pastel Charm Cascade Keychain',
     category: 'keychains',
     price: 10707,
-    image: '/products/keychains/pastel-cascade.jpg',
-    description: 'Pastel beads with multiple charm strands. Playful and colorful design.',
+    image: `${SUPABASE_IMG}/phone-charm-pink-beaded-strap.jpg`,
+    description: 'Pastel beads with multiple charm strands.',
     rating: 4.6,
-    reviewCount: 99,
+    reviewCount: 96,
     inStock: true,
     material: 'Pastel beads with metal charms',
     colors: ['Pastel Mix'],
@@ -260,8 +256,8 @@ export const products: Product[] = [
     name: 'Turquoise Bow Charm Keychain',
     category: 'keychains',
     price: 10707,
-    image: '/products/keychains/turquoise-bow.jpg',
-    description: 'Vibrant turquoise bow with pearl and star charms. Fresh and feminine style.',
+    image: `${SUPABASE_IMG}/phone-charm-teal-flower-fairy.jpg`,
+    description: 'Vibrant turquoise bow with pearl and star charms.',
     rating: 4.7,
     reviewCount: 121,
     inStock: true,
@@ -269,15 +265,13 @@ export const products: Product[] = [
     colors: ['Turquoise'],
     care: 'Wipe clean',
   },
-
-  // BRACELETS (4 variants)
   {
     id: 'brc-001',
     name: 'Charm Beaded Chain Bracelet',
     category: 'bracelets',
     price: 14037,
-    image: '/products/bracelets/charm-chain.jpg',
-    description: 'Classic chain bracelet with assorted charms and pearl beads. Versatile everyday luxury piece.',
+    image: `${SUPABASE_IMG}/bracelet-black-fairy-charm.jpg`,
+    description: 'Classic chain bracelet with assorted charms and pearl beads.',
     rating: 4.9,
     reviewCount: 312,
     inStock: true,
@@ -293,8 +287,8 @@ export const products: Product[] = [
     category: 'bracelets',
     price: 13197,
     originalPrice: 24807,
-    image: '/products/bracelets/pearl-heart.jpg',
-    description: 'Premium pearl and heart charm bracelet. Elegant everyday luxury for special occasions.',
+    image: `${SUPABASE_IMG}/bracelet-white-rose-charm.jpg`,
+    description: 'Premium pearl and rose charm bracelet for special occasions.',
     rating: 5.0,
     reviewCount: 245,
     inStock: true,
@@ -309,13 +303,13 @@ export const products: Product[] = [
     name: 'Black Bead Statement Bracelet',
     category: 'bracelets',
     price: 14037,
-    image: '/products/bracelets/black-bead.jpg',
-    description: 'Bold black beads with mixed metal charms. Modern statement piece for confident style.',
+    image: `${SUPABASE_IMG}/phone-charm-red-double-strand.jpg`,
+    description: 'Bold red and black beads with mixed metal charms.',
     rating: 4.7,
     reviewCount: 108,
     inStock: true,
-    material: 'Black obsidian-style beads',
-    colors: ['Black & Silver'],
+    material: 'Obsidian-style beads',
+    colors: ['Red & Black'],
     dimensions: 'Fits 6-8 inches',
     care: 'Clean with soft brush',
   },
@@ -324,26 +318,24 @@ export const products: Product[] = [
     name: 'Pastel Bow Beads Bracelet',
     category: 'bracelets',
     price: 15697,
-    image: '/products/bracelets/pastel-bow.jpg',
-    description: 'Delicate pastel beads with pretty bow charm. Sweet and feminine everyday jewelry.',
+    image: `${SUPABASE_IMG}/bracelets-red-pearl-bow.jpg`,
+    description: 'Delicate red and pearl beads with pretty bow charm.',
     rating: 4.8,
     reviewCount: 178,
     inStock: true,
     badge: 'new',
-    material: 'Pastel acrylic beads with bow',
-    colors: ['Pastel Mix'],
+    material: 'Acrylic beads with bow',
+    colors: ['Red & Pearl'],
     dimensions: 'Adjustable 6-8 inches',
     care: 'Avoid prolonged moisture',
   },
-
-  // NECKLACES (4 variants - NEW CATEGORY)
   {
     id: 'nck-001',
     name: 'Bow & Heart Bead Necklace',
     category: 'necklaces',
     price: 16527,
-    image: '/products/necklaces/bow-heart.jpg',
-    description: 'Elegant bow with cascading heart and bead charm details. Romantic statement necklace.',
+    image: `${SUPABASE_IMG}/phone-charm-red-bow-heart.jpg`,
+    description: 'Elegant bow with cascading heart and bead charm details.',
     rating: 4.8,
     reviewCount: 134,
     inStock: true,
@@ -358,8 +350,8 @@ export const products: Product[] = [
     name: 'Pearl & Flower Necklace',
     category: 'necklaces',
     price: 17357,
-    image: '/products/necklaces/pearl-flowers.jpg',
-    description: 'Double strand with pearls, flowers, and charm elements. Luxurious layered necklace.',
+    image: `${SUPABASE_IMG}/phone-charm-red-cake.jpg`,
+    description: 'Double strand with pearls, flowers, and charm elements.',
     rating: 4.9,
     reviewCount: 189,
     inStock: true,
@@ -374,8 +366,8 @@ export const products: Product[] = [
     category: 'necklaces',
     price: 16527,
     originalPrice: 24807,
-    image: '/products/necklaces/green-bow.jpg',
-    description: 'Green bow with pearl and star charm strands. Nature-inspired elegant piece.',
+    image: `${SUPABASE_IMG}/necklace-green-heart-locket.jpg`,
+    description: 'Green and pearl heart locket necklace with bow detail.',
     rating: 4.7,
     reviewCount: 112,
     inStock: true,
@@ -390,8 +382,8 @@ export const products: Product[] = [
     name: 'Heart Charm Pendant Necklace',
     category: 'necklaces',
     price: 16527,
-    image: '/products/necklaces/heart-pendant.jpg',
-    description: 'Red heart charm with pearl and bead accents on cord. Romantic everyday jewelry.',
+    image: `${SUPABASE_IMG}/phone-charm-red-heart-triple.jpg`,
+    description: 'Red heart charm with pearl and bead accents on cord.',
     rating: 4.8,
     reviewCount: 156,
     inStock: true,
@@ -401,9 +393,8 @@ export const products: Product[] = [
     dimensions: '16-18 inches adjustable',
     care: 'Avoid excessive moisture',
   },
-];
+  ];
 
-// Helper functions
 export function getProductsByCategory(category: Product['category']): Product[] {
   return products.filter((product) => product.category === category);
 }
@@ -422,15 +413,9 @@ export function getSaleProducts(): Product[] {
 
 export function searchProducts(query: string): Product[] {
   const lowerQuery = query.toLowerCase();
-  return products.filter(
-    (product) =>
-      product.name.toLowerCase().includes(lowerQuery) ||
-      product.description.toLowerCase().includes(lowerQuery) ||
-      product.material.toLowerCase().includes(lowerQuery)
-  );
+  return products.filter((product) => product.name.toLowerCase().includes(lowerQuery) || product.description.toLowerCase().includes(lowerQuery) || (product.material?.toLowerCase().includes(lowerQuery) ?? false));
 }
 
-// Product statistics
 export const PRODUCT_STATS = {
   total: products.length,
   byCategory: {
@@ -443,16 +428,10 @@ export const PRODUCT_STATS = {
   onSale: products.filter((p) => p.originalPrice).length,
 };
 
-// Currency formatter
 export function formatINR(amount: number): string {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 0,
-  }).format(amount);
+  return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(amount);
 }
 
-// Alias for getProductById
 export function getProduct(id: string): Product | undefined {
   return getProductById(id);
 }
