@@ -11,6 +11,9 @@ export type Product = {
   featured?: boolean;
   inStock?: boolean;
   description?: string;
+    badge?: string;
+  collection?: string;
+  originalPrice?: number;
 };
 
 export const products: Product[] = [
@@ -271,3 +274,12 @@ export const products: Product[] = [
     description: "Statement red double-strand charm with rich pearl and bow styling."
   }
 ];
+
+
+export function getProduct(id: string): Product | undefined {
+  return products.find((p) => p.id === id);
+}
+
+export function formatINR(price: number): string {
+  return `₹${price.toLocaleString('en-IN')}`;
+}
