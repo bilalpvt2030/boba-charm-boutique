@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Product } from '../../lib/products';
 import { ProductImage } from './ProductImage';
-import { ProductPrice } from './ProductPrice';
 import { ProductBadge } from './ProductBadge';
 
 interface ProductCardProps {
@@ -61,12 +60,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
           >
             {product.name}
           </h3>
-          {/* Price */}
-          <ProductPrice
-            price={product.price}
-            originalPrice={product.originalPrice}
-            onSale={!!product.originalPrice}
-          />
+
           {/* Add to Cart Button */}
           <button
             disabled={!product.inStock}
