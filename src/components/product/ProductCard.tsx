@@ -2,6 +2,7 @@ import React from 'react';
 import type { Product } from '../../lib/products';
 import { ProductImage } from './ProductImage';
 import { ProductBadge } from './ProductBadge';
+import { formatINR } from '../../lib/products';
 
 interface ProductCardProps {
   product: Product;
@@ -21,18 +22,17 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
         onMouseLeave={() => setIsHovered(false)}
         className={`cursor-pointer group ${className}`}
       >
-        {/* Image Container with Badge */}
-        <div className="relative mb-4">
+        {/* Image Container */}
+        <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-pink-50">
           <ProductImage
             src={product.image}
             alt={product.name}
-            priority={false}
-            className="group-hover:opacity-90"
+            className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
-          {/* Badge - Top Right */}
+          {/* Badge */}
           {product.badge && (
             <div
-              className="absolute top-3 right-3"
+              className="absolute top-3 right-3 z-10"
               style={{
                 opacity: isHovered ? 1 : 0.85,
                 transition: 'opacity 200ms ease-out',
@@ -41,7 +41,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
               <ProductBadge type={product.badge} />
             </div>
           )}
-          {/* Stock Status */}
+          {/* Out of Stock overlay */}
           {!product.inStock && (
             <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/30">
               <span className="font-bold text-white text-sm">Out of Stock</span>
@@ -49,18 +49,19 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
           )}
         </div>
 
-        {/* Content Container */}
-        <div className="flex flex-col gap-3 px-2">
+        {/* Content */}
+        <div className="mt-3 flex flex-col gap-1 px-1">
           {/* Product Name */}
           <h3
-            className="font-semibold line-clamp-2 group-hover:opacity-75 text-sm leading-snug"
-            style={{
-              transition: 'opacity 200ms ease-out',
-            }}
+            className="font-semibold line-clamp-2 text-sm leading-snug"
+            style={{ transition: 'opacity 200ms ease-out' }}
           >
             {product.name}
           </h3>
-
+          {/* Price */}
+          <p className="text-sm font-medium text-gray-700">
+            {formatINR(product.price)}
+          </p>
           {/* Add to Cart Button */}
           <button
             disabled={!product.inStock}
