@@ -27,19 +27,12 @@ export const ProductImage = React.forwardRef<HTMLDivElement, ProductImageProps>(
     return (
       <div
         ref={ref}
-        className={`relative w-full aspect-square overflow-hidden rounded-lg ${className}`}
-        style={{
-          backgroundColor: '#F5EEF2',
-        }}
+        className={`relative w-full aspect-[3/4] overflow-hidden rounded-lg bg-pink-50 ${className}`}
       >
-        {/* Placeholder / Loading state */}
+        {/* Loading state */}
         {isLoading && (
-          <div
-            className="absolute inset-0 animate-pulse flex items-center justify-center bg-pink-100"
-          >
-            <span className="text-xs text-pink-300">
-              Loading...
-            </span>
+          <div className="absolute inset-0 animate-pulse flex items-center justify-center bg-pink-100">
+            <span className="text-xs text-pink-300">Loading...</span>
           </div>
         )}
 
@@ -49,9 +42,7 @@ export const ProductImage = React.forwardRef<HTMLDivElement, ProductImageProps>(
             className="absolute inset-0 flex items-center justify-center flex-col gap-2 p-4"
             style={{ backgroundColor: '#F5EEF2' }}
           >
-            <span className="text-sm text-pink-300">
-              Image unavailable
-            </span>
+            <span className="text-sm text-pink-300">Image unavailable</span>
           </div>
         )}
 
@@ -63,7 +54,7 @@ export const ProductImage = React.forwardRef<HTMLDivElement, ProductImageProps>(
             loading={priority ? 'eager' : 'lazy'}
             onLoad={handleLoad}
             onError={handleError}
-            className="w-full h-full object-cover transition-opacity duration-300"
+            className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300"
             style={{
               opacity: isLoading ? 0 : 1,
             }}
