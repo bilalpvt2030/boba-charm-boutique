@@ -10,54 +10,23 @@ interface ProductImageProps {
 }
 
 export const ProductImage = React.forwardRef<HTMLDivElement, ProductImageProps>(
-  ({ src, alt, placeholder, className = '', priority = false, onLoad }, ref) => {
-    const [isLoading, setIsLoading] = useState(true);
+  ({ src, alt, className = '', priority = false, onLoad }, ref) => {
     const [error, setError] = useState(false);
 
-    const handleLoad = () => {
-      setIsLoading(false);
-      onLoad?.();
-    };
-
-    const handleError = () => {
-      setIsLoading(false);
-      setError(true);
-    };
-
     return (
-      <div
-        ref={ref}
-        className={`relative w-full aspect-[3/4] overflow-hidden rounded-lg bg-pink-50 ${className}`}
-      >
-        {/* Loading state */}
-        {isLoading && (
-          <div className="absolute inset-0 animate-pulse flex items-center justify-center bg-pink-100">
-            <span className="text-xs text-pink-300">Loading...</span>
+      <div ref={ref} className={`w-full h-full ${className}`}>
+        {error ? (
+          <div className="w-full h-full flex items-center justify-center bg-pink-50">
+            <span className="text-xs text-pink-300">Image unavailable</span>
           </div>
-        )}
-
-        {/* Error state */}
-        {error && (
-          <div
-            className="absolute inset-0 flex items-center justify-center flex-col gap-2 p-4"
-            style={{ backgroundColor: '#F5EEF2' }}
-          >
-            <span className="text-sm text-pink-300">Image unavailable</span>
-          </div>
-        )}
-
-        {/* Main image */}
-        {!error && (
+        ) : (
           <img
             src={src}
             alt={alt}
             loading={priority ? 'eager' : 'lazy'}
-            onLoad={handleLoad}
-            onError={handleError}
-            className="absolute inset-0 w-full h-full object-contain transition-opacity duration-300"
-            style={{
-              opacity: isLoading ? 0 : 1,
-            }}
+            onLoad={onLoad}
+            onError={() => setError(true)}
+            className="w-full h-full object-contain"
           />
         )}
       </div>
