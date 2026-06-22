@@ -50,7 +50,7 @@ export const products: Product[] = [
     name: "Floral Dream",
     price: 49,
     category: "charm",
-    image: `${SUPABASE_BASE}/earrings-mint-butterfly-star.jpg`,
+        image: "https://raw.githubusercontent.com/bilalpvt2030/products-/main/49(4).jpg",
     inStock: true,
     collection: "Spring Edit",
   },
