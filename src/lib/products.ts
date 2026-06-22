@@ -1,4 +1,5 @@
-const SUPABASE_BASE = "https://uqradmprupflbivhzshi.supabase.co/storage/v1/object/public/products";
+const SUPABASE_BASE =
+  "https://uqradmprupflbivhzshi.supabase.co/storage/v1/object/public/products";
 
 export type Product = {
   id: string;
@@ -8,7 +9,7 @@ export type Product = {
   image: string;
   images?: string[];
   featured?: boolean;
-  inStock?: boolean;
+  inStock: boolean;
   description?: string;
   badge?: string;
   collection?: string;
@@ -16,40 +17,13 @@ export type Product = {
 };
 
 export const products: Product[] = [
-  // ₹49 - Budget Charms (5 products, similar aesthetic)
+  // ₹49 — Budget Charms (5 products)
   {
     id: "pearl-blossom",
     name: "Pearl Blossom",
     price: 49,
     category: "charm",
-    image: `${SUPABASE_BASE}/49.jpg`,
-    inStock: true,
-    collection: "Spring Edit",
-  },
-  {
-    id: "blossom-grace",
-    name: "Blossom Grace",
-    price: 49,
-    category: "charm",
-    image: `${SUPABASE_BASE}/49(5).jpg`,
-    inStock: true,
-    collection: "Spring Edit",
-  },
-  {
-    id: "petal-bloom",
-    name: "Petal Bloom",
-    price: 49,
-    category: "charm",
-    image: `${SUPABASE_BASE}/49(3).jpg`,
-    inStock: true,
-    collection: "Spring Edit",
-  },
-  {
-    id: "floral-dream",
-    name: "Floral Dream",
-    price: 49,
-    category: "charm",
-    image: `${SUPABASE_BASE}/49(4).jpg`,
+    image: `${SUPABASE_BASE}/bracelet-white-rose-charm.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
@@ -58,27 +32,54 @@ export const products: Product[] = [
     name: "Rose Quartz",
     price: 49,
     category: "charm",
-    image: `${SUPABASE_BASE}/49(2).jpg`,
+    image: `${SUPABASE_BASE}/earrings-purple-butterfly-star.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
-  // ₹99 - Entry Level
+  {
+    id: "petal-bloom",
+    name: "Petal Bloom",
+    price: 49,
+    category: "charm",
+    image: `${SUPABASE_BASE}/earrings-yellow-butterfly-star.jpg`,
+    inStock: true,
+    collection: "Spring Edit",
+  },
+  {
+    id: "floral-dream",
+    name: "Floral Dream",
+    price: 49,
+    category: "charm",
+    image: `${SUPABASE_BASE}/earrings-blue-butterfly-star.jpg`,
+    inStock: true,
+    collection: "Spring Edit",
+  },
+  {
+    id: "blossom-grace",
+    name: "Blossom Grace",
+    price: 49,
+    category: "charm",
+    image: `${SUPABASE_BASE}/phone-charm-blue-flower.jpg`,
+    inStock: true,
+    collection: "Spring Edit",
+  },
+  // ₹99
   {
     id: "crystal-mist",
     name: "Crystal Mist",
     price: 99,
     category: "charm",
-    image: `${SUPABASE_BASE}/99.jpg`,
+    image: `${SUPABASE_BASE}/bracelet-black-fairy-charm.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
-  // ₹109 - Mid Range (3 products)
+  // ₹109
   {
     id: "ivory-whisper",
     name: "Ivory Whisper",
     price: 109,
     category: "charm",
-    image: `${SUPABASE_BASE}/109.jpg`,
+    image: `${SUPABASE_BASE}/phone-charm-black-bow-star.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
@@ -87,7 +88,7 @@ export const products: Product[] = [
     name: "Sakura Elegance",
     price: 109,
     category: "charm",
-    image: `${SUPABASE_BASE}/109(2).jpg`,
+    image: `${SUPABASE_BASE}/phone-charm-black-white-strap.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
@@ -96,17 +97,17 @@ export const products: Product[] = [
     name: "Luna Pearl",
     price: 109,
     category: "charm",
-    image: `${SUPABASE_BASE}/109(3).jpg`,
+    image: `${SUPABASE_BASE}/phone-charm-green-bow-star.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
-  // ₹119 - Mid Range (2 products)
+  // ₹119
   {
     id: "moonstone-glow",
     name: "Moonstone Glow",
     price: 119,
     category: "charm",
-    image: `${SUPABASE_BASE}/119(2).jpg`,
+    image: `${SUPABASE_BASE}/phone-charm-green-bow-double.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
@@ -115,17 +116,17 @@ export const products: Product[] = [
     name: "Opal Dreams",
     price: 119,
     category: "charm",
-    image: `${SUPABASE_BASE}/119.jpg`,
+    image: `${SUPABASE_BASE}/bracelets-red-pearl-bow.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
-  // ₹129 - Mid Range (2 products)
+  // ₹129
   {
     id: "silk-petal",
     name: "Silk Petal",
     price: 129,
     category: "charm",
-    image: `${SUPABASE_BASE}/129(2).jpg`,
+    image: `${SUPABASE_BASE}/necklace-red-heart-trio.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
@@ -134,17 +135,17 @@ export const products: Product[] = [
     name: "Velvet Rose",
     price: 129,
     category: "charm",
-    image: `${SUPABASE_BASE}/129.jpg`,
+    image: `${SUPABASE_BASE}/necklace-green-heart-locket.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
-  // ₹159 - Premium (3 products)
+  // ₹159
   {
     id: "blossom-whisper",
     name: "Blossom Whisper",
     price: 159,
     category: "charm",
-    image: `${SUPABASE_BASE}/159(3).jpg`,
+    image: `${SUPABASE_BASE}/necklace-galaxy-heart-pair.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
@@ -153,7 +154,7 @@ export const products: Product[] = [
     name: "Frosted Pearl",
     price: 159,
     category: "charm",
-    image: `${SUPABASE_BASE}/159(2).jpg`,
+    image: `${SUPABASE_BASE}/keychain-maliha-personalized.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
@@ -162,17 +163,17 @@ export const products: Product[] = [
     name: "Morning Dew",
     price: 159,
     category: "charm",
-    image: `${SUPABASE_BASE}/159.jpg`,
+    image: `${SUPABASE_BASE}/keychain-guitar-phone-charm.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
-  // ₹169 - Premium (2 products)
+  // ₹169
   {
     id: "orchid-grace",
     name: "Orchid Grace",
     price: 169,
     category: "charm",
-    image: `${SUPABASE_BASE}/169.jpg`,
+    image: `${SUPABASE_BASE}/keychain-williams-f1-blue.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
@@ -181,28 +182,27 @@ export const products: Product[] = [
     name: "Petal Cascade",
     price: 169,
     category: "charm",
-    image: `${SUPABASE_BASE}/169(2).jpg`,
+    image: `${SUPABASE_BASE}/bracelet-white-rose-charm.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
-  // ₹189 - Premium
+  // ₹189
   {
     id: "velvet-pearl",
     name: "Velvet Pearl",
     price: 189,
     category: "charm",
-    image: `${SUPABASE_BASE}/189.jpg`,
+    image: `${SUPABASE_BASE}/bracelet-black-fairy-charm.jpg`,
     inStock: true,
-    featured: true,
     collection: "Spring Edit",
   },
-  // ₹199 - High Premium (4 products, featured)
+  // ₹199
   {
     id: "aurora-mist",
     name: "Aurora Mist",
     price: 199,
     category: "charm",
-    image: `${SUPABASE_BASE}/199.jpg`,
+    image: `${SUPABASE_BASE}/earrings-purple-butterfly-star.jpg`,
     inStock: true,
     featured: true,
     collection: "Spring Edit",
@@ -212,7 +212,7 @@ export const products: Product[] = [
     name: "Celestial Drop",
     price: 199,
     category: "charm",
-    image: `${SUPABASE_BASE}/199(2).jpg`,
+    image: `${SUPABASE_BASE}/necklace-galaxy-heart-pair.jpg`,
     inStock: true,
     featured: true,
     collection: "Spring Edit",
@@ -222,7 +222,7 @@ export const products: Product[] = [
     name: "Dewdrop Bliss",
     price: 199,
     category: "charm",
-    image: `${SUPABASE_BASE}/199(3).jpg`,
+    image: `${SUPABASE_BASE}/phone-charm-blue-flower.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
@@ -231,39 +231,39 @@ export const products: Product[] = [
     name: "Starlit Petal",
     price: 199,
     category: "charm",
-    image: `${SUPABASE_BASE}/199(4).jpg`,
+    image: `${SUPABASE_BASE}/earrings-blue-butterfly-star.jpg`,
     inStock: true,
     collection: "Spring Edit",
   },
-  // ₹209 - Ultra Premium
+  // ₹209
   {
     id: "ethereal-glow",
     name: "Ethereal Glow",
     price: 209,
     category: "charm",
-    image: `${SUPABASE_BASE}/209.jpg`,
+    image: `${SUPABASE_BASE}/bracelets-red-pearl-bow.jpg`,
     inStock: true,
     featured: true,
     collection: "Spring Edit",
   },
-  // ₹299 - Luxury
+  // ₹299
   {
     id: "royal-bloom",
     name: "Royal Bloom",
     price: 299,
     category: "charm",
-    image: `${SUPABASE_BASE}/299.jpg`,
+    image: `${SUPABASE_BASE}/necklace-red-heart-trio.jpg`,
     inStock: true,
     featured: true,
     collection: "Spring Edit",
   },
-  // ₹650 - Ultra Luxury
+  // ₹650
   {
     id: "grand-pearl",
     name: "Grand Pearl",
     price: 650,
     category: "charm",
-    image: `${SUPABASE_BASE}/650.jpg`,
+    image: `${SUPABASE_BASE}/necklace-green-heart-locket.jpg`,
     inStock: true,
     featured: true,
     badge: "Premium",
@@ -275,6 +275,10 @@ export function getProduct(id: string): Product | undefined {
   return products.find((p) => p.id === id);
 }
 
-export function formatINR(price: number): string {
-  return `\u20b9${price.toLocaleString('en-IN')}`;
+export function formatINR(amount: number): string {
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    minimumFractionDigits: 0,
+  }).format(amount);
 }
