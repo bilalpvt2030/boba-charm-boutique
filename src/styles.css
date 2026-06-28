@@ -41,12 +41,10 @@
 
 :root {
   --radius: 0.25rem;
-
   /* Brand */
-  --blush: oklch(0.953 0.012 350);          /* #F5EEF2 */
-  --rose: oklch(0.83 0.09 350);              /* #FFB1D3 */
+  --blush: oklch(0.953 0.012 350); /* #F5EEF2 */
+  --rose: oklch(0.83 0.09 350);   /* #FFB1D3 */
   --ink: oklch(0.22 0.01 350);
-
   --background: var(--blush);
   --foreground: var(--ink);
   --card: oklch(0.985 0.005 350);
@@ -69,30 +67,68 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html, body { background-color: var(--color-background); color: var(--color-foreground); }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    border-color: var(--color-border);
+  }
+
+  html {
+    overflow-x: hidden;
+  }
+
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
   body {
     font-family: var(--font-sans);
+    font-size: 16px;
     font-weight: 300;
     letter-spacing: 0.005em;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  h1, h2, h3, .font-display { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.01em; }
-  .font-serif-italic { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .font-serif-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 300;
+  }
 }
 
 @layer utilities {
-  .fade-in-up { animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .float-soft { animation: floatSoft 7s ease-in-out infinite; }
-  .hover-lift { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.6s ease; }
-  .hover-lift:hover { transform: translateY(-4px); }
+  .fade-in-up {
+    animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .float-soft {
+    animation: floatSoft 7s ease-in-out infinite;
+  }
+  .hover-lift {
+    transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.6s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
 }
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes floatSoft {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50%      { transform: translateY(-10px); }
 }
