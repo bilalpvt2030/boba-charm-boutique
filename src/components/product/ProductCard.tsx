@@ -13,7 +13,6 @@ interface ProductCardProps {
 export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
   ({ product, onClick, className = '' }, ref) => {
     const [isHovered, setIsHovered] = React.useState(false);
-
     return (
       <div
         ref={ref}
@@ -23,21 +22,16 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
         className={`cursor-pointer group ${className}`}
       >
         {/* Image Container */}
-        <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-pink-50">
+        <div className="relative overflow-hidden rounded-lg bg-pink-50" style={{ aspectRatio: '1 / 1' }}>
           <ProductImage
             src={product.image}
             alt={product.name}
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
-          {/* Badge */}
+          {/* Badge - top LEFT */}
           {product.badge && (
-            <div
-              className="absolute top-3 right-3 z-10"
-              style={{
-                opacity: isHovered ? 1 : 0.85,
-                transition: 'opacity 200ms ease-out',
-              }}
-            >
+            <div className="absolute top-2 left-2 z-10">
               <ProductBadge type={product.badge} />
             </div>
           )}
@@ -48,16 +42,18 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
             </div>
           )}
         </div>
-
         {/* Content */}
         <div className="mt-3 flex flex-col gap-1 px-1">
           {/* Product Name */}
-          <h3
-            className="font-semibold line-clamp-2 text-sm leading-snug"
-            style={{ transition: 'opacity 200ms ease-out' }}
-          >
+          <h3 className="font-semibold line-clamp-2 text-sm leading-snug">
             {product.name}
           </h3>
+          {/* Description */}
+          {product.description && (
+            <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+              {product.description}
+            </p>
+          )}
           {/* Price */}
           <p className="text-sm font-medium text-gray-700">
             {formatINR(product.price)}
@@ -65,7 +61,7 @@ export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
           {/* Add to Cart Button */}
           <button
             disabled={!product.inStock}
-            className="mt-1 w-full py-2.5 font-semibold text-sm rounded-lg transition-all duration-300 uppercase tracking-wide"
+            className="mt-1 w-full py-2.5 font-semibold text-sm rounded-lg transition-all duration-300 uppercase tracking-wide min-h-[44px]"
             style={{
               backgroundColor: product.inStock ? '#FFB1D3' : '#CCCCCC',
               color: product.inStock ? '#FFFFFF' : '#999999',
