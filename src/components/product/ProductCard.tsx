@@ -1,8 +1,7 @@
 import React from 'react';
 import type { Product } from '../../lib/products';
-import { ProductImage } from './ProductImage';
-import { ProductBadge } from './ProductBadge';
 import { formatINR } from '../../lib/products';
+import { ProductBadge } from './ProductBadge';
 
 interface ProductCardProps {
   product: Product;
@@ -12,61 +11,57 @@ interface ProductCardProps {
 
 export const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
   ({ product, onClick, className = '' }, ref) => {
-    const [isHovered, setIsHovered] = React.useState(false);
+    const [imgError, setImgError] = React.useState(false);
+
     return (
       <div
         ref={ref}
         onClick={onClick}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         className={`cursor-pointer group ${className}`}
       >
-        {/* Image Container */}
+        {/* Square image container */}
         <div className="relative overflow-hidden rounded-lg bg-pink-50" style={{ aspectRatio: '1 / 1' }}>
-          <ProductImage
-            src={product.image}
-            alt={product.name}
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-          />
-          {/* Badge - top LEFT */}
+          {imgError ? (
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-xs text-pink-300">Image unavailable</span>
+            </div>
+          ) : (
+            <img
+              src={product.image}
+              alt={product.name}
+              loading="lazy"
+              onError={() => setImgError(true)}
+              className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+          )}
+          {/* Badge - top left */}
           {product.badge && (
             <div className="absolute top-2 left-2 z-10">
               <ProductBadge type={product.badge} />
             </div>
           )}
-          {/* Out of Stock overlay */}
+          {/* Out of stock overlay */}
           {!product.inStock && (
-            <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/30">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-lg">
               <span className="font-bold text-white text-sm">Out of Stock</span>
             </div>
           )}
         </div>
-        {/* Content */}
+
+        {/* Card content: name, price, button ONLY */}
         <div className="mt-3 flex flex-col gap-1 px-1">
-          {/* Product Name */}
           <h3 className="font-semibold line-clamp-2 text-sm leading-snug">
             {product.name}
           </h3>
-          {/* Description */}
-          {product.description && (
-            <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-              {product.description}
-            </p>
-          )}
-          {/* Price */}
           <p className="text-sm font-medium text-gray-700">
             {formatINR(product.price)}
           </p>
-          {/* Add to Cart Button */}
           <button
             disabled={!product.inStock}
-            className="mt-1 w-full py-2.5 font-semibold text-sm rounded-lg transition-all duration-300 uppercase tracking-wide min-h-[44px]"
+            className="mt-1 w-full min-h-[44px] py-2.5 font-semibold text-sm rounded-lg transition-all duration-300 uppercase tracking-wide"
             style={{
               backgroundColor: product.inStock ? '#FFB1D3' : '#CCCCCC',
               color: product.inStock ? '#FFFFFF' : '#999999',
-              opacity: isHovered && product.inStock ? 1 : 0.95,
-              transform: isHovered && product.inStock ? 'scale(1.02)' : 'scale(1)',
               cursor: product.inStock ? 'pointer' : 'not-allowed',
             }}
           >
