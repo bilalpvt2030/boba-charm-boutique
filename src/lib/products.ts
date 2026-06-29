@@ -1,5 +1,4 @@
-const BASE = "https://uqradmprupflbivhzshi.supabase.co/storage/v1/object/public/product-imagesproducts";
-
+const BASE = "https://uqradmprupflbivhzshi.supabase.co/storage/v1/object/public/product-images";
 export type Product = {
   id: string;
   name: string;
